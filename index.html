@@ -1,367 +1,1509 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gi-Luen (Allen) Huang</title>
+    <title>Gi-Luen (Allen) Huang — Senior AI Engineer</title>
+    <meta name="description"
+        content="Gi-Luen (Allen) Huang — Senior AI Engineer & Assistant Project Manager at CyberLink. Generative AI, diffusion models, computer vision, and on-device deployment.">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F4F5FA;
+            --bg-2: #ECEEF6;
+            --surface: #FFFFFF;
+            --surface-2: #F2F3F9;
+            --line: rgba(18, 22, 44, 0.10);
+            --line-strong: rgba(18, 22, 44, 0.20);
+            --text: #15171F;
+            --muted: #5B6076;
+            --muted-dim: #8A8FA3;
+            --hot-1: #6C5CE7;
+            --hot-2: #E5277B;
+            --hot-3: #F0801E;
+            --grad: linear-gradient(100deg, #6C5CE7 0%, #E5277B 52%, #F0801E 100%);
+            --display: "Space Grotesk", system-ui, sans-serif;
+            --body: "Manrope", system-ui, sans-serif;
+            --mono: "IBM Plex Mono", ui-monospace, monospace;
+            --wrap: min(1120px, 90vw);
+            --shadow: 0 1px 2px rgba(18, 22, 44, .05), 0 12px 30px rgba(18, 22, 44, .05);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--body);
+            font-size: 17px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ::selection {
+            background: var(--hot-2);
+            color: #fff;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--hot-2);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        .wrap {
+            width: var(--wrap);
+            margin: 0 auto;
+        }
+
+        .mono {
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .grad-text {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ---------- Nav ---------- */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+            background: transparent;
+            transition: background .35s ease, border-color .35s ease, padding .35s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(244, 245, 250, 0.82);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+            padding: 12px 0;
+        }
+
+        .nav .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            letter-spacing: 0.18em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--grad);
+            box-shadow: 0 0 14px rgba(229, 39, 123, .5);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            transition: color .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 11px 18px;
+            border-radius: 999px;
+            border: 1px solid var(--line-strong);
+            color: var(--text);
+            background: var(--surface);
+            transition: transform .2s, border-color .2s, background .2s, box-shadow .2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            border-color: transparent;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-grad {
+            border: none;
+            background: var(--grad);
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .btn-grad:hover {
+            background: var(--grad);
+            filter: brightness(1.05);
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            overflow: hidden;
+        }
+
+        #field {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .hero-veil {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(120% 90% at 0% 50%, rgba(244, 245, 250, 0.94) 30%, rgba(244, 245, 250, 0.5) 70%, transparent 100%),
+                linear-gradient(to bottom, rgba(244, 245, 250, .55), transparent 22%, transparent 72%, var(--bg));
+            pointer-events: none;
+        }
+
+        .hero .wrap {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .hero-eyebrow .pulse {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--hot-3);
+            box-shadow: 0 0 0 0 rgba(240, 128, 30, .55);
+            animation: pulse 2.4s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(240, 128, 30, .5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 9px rgba(240, 128, 30, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(240, 128, 30, 0);
+            }
+        }
+
+        h1.hero-name {
+            font-family: var(--display);
+            font-weight: 600;
+            font-size: clamp(2.9rem, 8vw, 6.2rem);
+            line-height: 0.98;
+            letter-spacing: -0.03em;
+            margin: 0 0 6px;
+        }
+
+        .hero-nick {
+            font-family: var(--display);
+            font-weight: 400;
+            font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+            color: var(--muted-dim);
+            margin: 0 0 14px;
+            letter-spacing: 0;
+        }
+
+        h1.hero-name .alt {
+            color: var(--muted-dim);
+            font-weight: 400;
+            font-size: 0.42em;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-tagline {
+            font-family: var(--display);
+            font-weight: 500;
+            font-size: clamp(1.3rem, 3.2vw, 2.2rem);
+            line-height: 1.18;
+            letter-spacing: -0.01em;
+            max-width: 18ch;
+            margin: 0 0 26px;
+        }
+
+        .hero-sub {
+            color: var(--muted);
+            max-width: 56ch;
+            font-size: 1.05rem;
+            margin: 0 0 38px;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .spec-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px 28px;
+            padding-top: 28px;
+            border-top: 1px solid var(--line);
+            max-width: 760px;
+        }
+
+        .spec {
+            font-family: var(--mono);
+            font-size: 0.76rem;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+            display: flex;
+            align-items: baseline;
+            gap: 9px;
+        }
+
+        .spec b {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .spec .tick {
+            color: var(--hot-2);
+        }
+
+        /* ---------- Sections ---------- */
+        .section {
+            padding: clamp(80px, 11vw, 150px) 0;
+            position: relative;
+        }
+
+        .section.alt {
+            background: var(--bg-2);
+        }
+
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            gap: 18px;
+            margin-bottom: 56px;
+            flex-wrap: wrap;
+        }
+
+        .section-head .idx {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--hot-2);
+            letter-spacing: 0.1em;
+        }
+
+        .section-head h2 {
+            font-family: var(--display);
+            font-weight: 600;
+            font-size: clamp(1.9rem, 4.5vw, 3rem);
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+
+        /* ---------- About ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .portrait {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .portrait img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            object-position: 85% 32%;
+            filter: grayscale(0.15) contrast(1.03);
+        }
+
+        .portrait::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 52%, rgba(108, 92, 231, 0.10), rgba(229, 39, 123, 0.14));
+            mix-blend-mode: multiply;
+            pointer-events: none;
+        }
+
+        .about-body p {
+            margin: 0 0 20px;
+            color: #3C4051;
+        }
+
+        .about-body p strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .facts {
+            list-style: none;
+            margin: 32px 0 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .facts li {
+            background: var(--surface);
+            padding: 16px 20px;
+        }
+
+        .facts .k {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted-dim);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .facts .v {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        /* ---------- Experience ---------- */
+        .timeline {
+            position: relative;
+        }
+
+        .tl-item {
+            position: relative;
+            padding: 0 0 14px 38px;
+            border-left: 1px solid var(--line);
+        }
+
+        .tl-item:last-child {
+            border-left-color: transparent;
+        }
+
+        .tl-item::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--grad);
+            box-shadow: 0 0 0 4px var(--bg);
+        }
+
+        .tl-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 6px 18px;
+            margin-bottom: 4px;
+        }
+
+        .tl-company {
+            font-family: var(--display);
+            font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: -0.01em;
+        }
+
+        .tl-company a {
+            border-bottom: 1px solid transparent;
+            transition: border-color .2s;
+        }
+
+        .tl-company a:hover {
+            border-bottom-color: var(--hot-2);
+        }
+
+        .tl-when {
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .tl-loc {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted-dim);
+            margin-bottom: 22px;
+        }
+
+        .role {
+            margin: 0 0 22px;
+            padding: 18px 20px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: border-color .25s, transform .25s;
+        }
+
+        .role:hover {
+            border-color: var(--line-strong);
+            transform: translateX(3px);
+        }
+
+        .role-title {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 4px 16px;
+            margin-bottom: 12px;
+        }
+
+        .role-title h4 {
+            margin: 0;
+            font-family: var(--display);
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .role-title .when {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--hot-3);
+            letter-spacing: 0.04em;
+        }
+
+        .role ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .role li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 9px;
+            color: #41465A;
+            font-size: 0.97rem;
+        }
+
+        .role li:last-child {
+            margin-bottom: 0;
+        }
+
+        .role li::before {
+            content: "";
+            position: absolute;
+            left: 2px;
+            top: 11px;
+            width: 6px;
+            height: 1px;
+            background: var(--hot-2);
+        }
+
+        .single-role {
+            margin-bottom: 38px;
+        }
+
+        .teaching {
+            margin-top: 8px;
+            padding: 22px 24px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .teaching .k {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted-dim);
+            margin-bottom: 12px;
+        }
+
+        .teaching ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+
+        .teaching li {
+            font-size: 0.92rem;
+            color: #41465A;
+        }
+
+        .teaching .course {
+            color: var(--text);
+        }
+
+        /* ---------- Work / Projects ---------- */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            transition: transform .3s, border-color .3s, box-shadow .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--line-strong);
+            box-shadow: 0 2px 6px rgba(18, 22, 44, .07), 0 22px 48px rgba(18, 22, 44, .10);
+        }
+
+        .card-img {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.3) contrast(1.03);
+            transition: transform .5s, filter .4s;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.05);
+            filter: grayscale(0) contrast(1.03);
+        }
+
+        .card-body {
+            padding: 22px 24px 26px;
+        }
+
+        .card-tag {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--hot-2);
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-family: var(--display);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 0 0 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            margin: 0 0 16px;
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .card-link {
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.06em;
+            color: var(--text);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-link .arrow {
+            transition: transform .25s;
+        }
+
+        .card:hover .card-link .arrow {
+            transform: translate(3px, -3px);
+        }
+
+        /* ---------- Publications ---------- */
+        .pubs {
+            display: grid;
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .pub {
+            background: var(--surface);
+            padding: 24px 26px;
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 24px;
+            align-items: start;
+            transition: background .25s;
+        }
+
+        .pub:hover {
+            background: var(--surface-2);
+        }
+
+        .pub .venue {
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.04em;
+            color: var(--hot-3);
+        }
+
+        .pub .venue span {
+            display: block;
+            color: var(--muted-dim);
+            margin-top: 3px;
+        }
+
+        .pub .title {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .pub .authors {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .pub .authors strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .pub .award {
+            display: inline-block;
+            margin-top: 8px;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.06em;
+            color: var(--hot-2);
+            border: 1px solid rgba(229, 39, 123, .4);
+            border-radius: 999px;
+            padding: 3px 11px;
+        }
+
+        .pub .thesis,
+        .pub .undergrad {
+            display: inline-block;
+            margin-top: 8px;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.06em;
+            color: var(--hot-1);
+            border: 1px solid rgba(108, 92, 231, .4);
+            border-radius: 999px;
+            padding: 3px 11px;
+        }
+
+        /* ---------- Skills ---------- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .skill-cat {
+            padding: 26px 28px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-cat h3 {
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 0 0 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-cat h3::before {
+            content: "";
+            width: 22px;
+            height: 2px;
+            background: var(--grad);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            font-size: 0.9rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            color: #41465A;
+        }
+
+        /* ---------- Contact ---------- */
+        .contact {
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: var(--display);
+            font-weight: 600;
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            letter-spacing: -0.02em;
+            margin: 0 0 20px;
+        }
+
+        .contact p {
+            color: var(--muted);
+            max-width: 48ch;
+            margin: 0 auto 36px;
+        }
+
+        .contact-mail {
+            font-family: var(--display);
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            border-bottom: 1px solid var(--line-strong);
+            padding-bottom: 4px;
+            transition: border-color .25s;
+        }
+
+        .contact-mail:hover {
+            border-bottom-color: var(--hot-2);
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 44px;
+        }
+
+        .socials a {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: var(--surface);
+            color: var(--muted);
+            transition: color .2s, border-color .2s, transform .2s, box-shadow .2s;
+        }
+
+        .socials a:hover {
+            color: var(--text);
+            border-color: transparent;
+            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+        }
+
+        .socials svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        footer .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        footer .mono {
+            font-size: 0.72rem;
+        }
+
+        #to-top {
+            cursor: pointer;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color .2s;
+        }
+
+        #to-top:hover {
+            color: var(--text);
+        }
+
+        /* ---------- Reveal ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1);
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 860px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 34px;
+            }
+
+            .portrait {
+                max-width: 320px;
+            }
+
+            .work-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .facts {
+                grid-template-columns: 1fr;
+            }
+
+            .pub {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .tl-when {
+                white-space: normal;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                scroll-behavior: auto !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div id="mobile-menu-open" class="shadow-large">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-    </div>
-    <!-- End #mobile-menu-toggle -->
-    <header>
-        <div id="mobile-menu-close">
-            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
-        </div>
-        <ul id="menu" class="shadow">
-            <li>
+    <!-- ===== Nav ===== -->
+    <nav class="nav" id="nav">
+        <div class="wrap">
+            <a class="brand" href="#top"><span class="dot"></span>GI-LUEN&nbsp;HUANG</a>
+            <div class="nav-links">
                 <a href="#about">About</a>
-            </li>
-            <li>
-                <a href="#education">Education</a>
-            </li>
-            <li>
-                <a href="#experience">Work Experience</a>
-            </li>
-            <li>
-                <a href="#projects">Projects</a>
-            </li>
-            <li>
+                <a href="#experience">Experience</a>
+                <a href="#work">Work</a>
                 <a href="#skills">Skills</a>
-            </li>
-            <li>
                 <a href="#contact">Contact</a>
-            </li>
-        </ul>
+                <a class="btn" href="doc/CV.pdf" target="_blank" rel="noopener">CV ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== Hero ===== -->
+    <header class="hero" id="top">
+        <canvas id="field" aria-hidden="true"></canvas>
+        <div class="hero-veil"></div>
+        <div class="wrap">
+            <h1 class="hero-name">Gi-Luen Huang</h1>
+            <p class="hero-nick">(Allen)</p>
+            <div class="hero-eyebrow mono"><span class="pulse"></span>Senior AI Engineer &amp; Assistant Project Manager
+                · CyberLink</div>
+            <div class="hero-cta">
+                <a class="btn btn-grad" href="doc/CV.pdf" target="_blank" rel="noopener">Download CV</a>
+                <a class="btn" href="#experience">See experience</a>
+                <a class="btn" href="#contact">Get in touch</a>
+            </div>
+        </div>
     </header>
-    <!-- End header -->
 
-    <div id="lead">
-        <div id="lead-content">
-            <h1>Gi-Luen (Allen) Huang</h1>
-            <h2>Senior AI Engineer &amp; Assistant Project Manager @ CyberLink </h2>
-            <a href="doc/CV.pdf" class="btn-rounded-white">CV</a>
-            <a href="#contact" class="btn-rounded-white">CONTACT ME</a>
-        </div>
-    </div>
-    <!-- End #lead-content -->
-
-    <div id="lead-overlay"></div>
-
-    <div id="lead-down">
-        <span>
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-        </span>
-    </div>
-    <!-- End #lead-down -->
-    </div>
-    <!-- End #lead -->
-
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="avatar p-1"><img class="img-thumbnail shadow-2-strong" src="images/lifeshot.jpg"
-                            width="1024" height="576" /></div>
+    <!-- ===== About ===== -->
+    <section class="section" id="about">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="idx">01</span>
+                <h2>About</h2>
+            </div>
+            <div class="about-grid">
+                <div class="portrait reveal">
+                    <img src="images/lifeshot.jpg" alt="Gi-Luen (Allen) Huang">
                 </div>
-                <div class="col-md-8">
-                    <h2 class="heading">About Me</h2>
-                    <p> I am currently a Senior AI Engineer &amp; Assistant Project Manager at CyberLink, where I specialize in computer vision,
-                        deep learning, and generative AI. Over the past three years in the industry, I have independently developed generative AI
-                        features with Flux-based models&mdash;including generative fill, object removal, product background generation, and human
-                        beauty effects&mdash;and I now guide team members on GenAI features while driving the team's adoption of agentic development.
-                        In 2023, I earned my M.S. degree from the Graduate Institute of Communication Engineering (GICE) at National Taiwan University,
-                        focusing on data science under the guidance of Professor Pei-Yuan Wu.
-                        With over four years of research experience, my interests span Deep Learning, Computer Vision, Machine Learning, and
-                        Generative AI.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End #about -->
-
-    <div id="education">
-        <h2 class="heading">Education</h2>
-        <div class="education-block">
-            <h3>National Taiwan University (NTU)</h3>
-            <span class="education-date">Feb. 2021 - Jan. 2023 <br> Taipei, Taiwan</span>
-            <h4>Master of Science in Data Science</h4>
-            <ul>
-                <li>
-                    GPA: 4.30/4.30, ranking: 1/160
-                </li>
-                <li>
-                    Thesis: "CTGAN: Cloud Transformer Generative Adversarial Network"
-                </li>
-                <li>
-                    Advisor: Prof. Pei-Yuan Wu
-                </li>
-            </ul>
-        </div>
-
-        <div class="education-block">
-            <h3>National Taiwan University of Science and Technology (NTUST)</h3>
-            <span class="education-date">Sep. 2017 - Jan. 2021 <br> Taipei, Taiwan</span>
-            <h4>Bachelor of Science in Electrical Engineering</h4>
-            <ul>
-                <li>
-                    GPA: 4.09/4.30, ranking: 7/102
-                </li>
-                <li>
-                    Paper publication: "Face Expression and Tone of Voice for Deception System"
-                </li>
-                <li>
-                    Advisor: Prof. Jing-Ming Guo
-                </li>
-            </ul>
-        </div>
-        <!-- End .education-block -->
-    </div>
-    <!-- End #education -->
-
-    <div id="experience" class="background-alt">
-        <h2 class="heading">Work Experience</h2>
-        <div id="experience-timeline">
-            <div data-date="May 2026 – Present  <br> New Taipei, Taiwan">
-                <h3><a href="https://tw.cyberlink.com/index_zh_TW.html">CyberLink</a></h3>
-                <h4>Senior AI Engineer &amp; Assistant Project Manager</h4>
-                <p> - Guide team members in developing GenAI-powered features, and assist in planning feature roadmaps and release timelines. </p>
-                <p> - Established and shared best practices for coding-agent adoption, helping the team reduce unexpected outputs and improve development efficiency. </p>
-                <p> - Designed and built an internal Agentic AI PoC platform integrated with the company's authentication system, enabling PMs and designers to accelerate their product and design workflows. </p>
-            </div>
-
-            <div data-date="May 2025 – May 2026  <br> New Taipei, Taiwan">
-                <h3><a href="https://tw.cyberlink.com/index_zh_TW.html">CyberLink</a></h3>
-                <h4>Senior AI Engineer</h4>
-                <p> - Trained LoRA on Flux for adaptive product background generation and object removal. </p>
-                <p> - Trained LoRA on Flux Kontext to deliver a human beauty-effect feature, whose quality outperformed Meitu in internal QA benchmarks. </p>
-                <p> - Built an image-to-video feature based on Wan2.2-Animate. </p>
-            </div>
-
-            <div data-date="Aug. 2024 – May 2025  <br> New Taipei, Taiwan">
-                <h3><a href="https://tw.cyberlink.com/index_zh_TW.html">CyberLink</a></h3>
-                <h4>AI Engineer</h4>
-                <p> - Developed Flux-based features trained with LoRA and ControlNet, including text-to-image generation and product background generation. </p>
-                <p> - Built and shipped the generative fill feature, which became the most-used feature in PhotoDirector Mobile (PhDM) after launch; in internal QA benchmarks, its quality outperformed Adobe Firefly, SnapEdit, and TouchRetouch. </p>
-            </div>
-
-            <div data-date="Jun. 2023 – May 2024  <br> New Taipei, Taiwan">
-                <h3><a href="https://www.mobiledrivetech.com/index.html">MobileDrive Technology</a></h3>
-                <h4>Machine Learning Engineer</h4>
-                <p> - Developed an approach to project future vehicle trajectories onto current front-view images, serving as ground truth for the 3D vehicle future trajectory prediction model. This approach utilizes data collected by vehicles equipped with RTK and front-view cameras, enabling model training with minimal human intervention. </p>
-                <p> - Developed and optimized a 3D vehicle future trajectory prediction model, enhancing performance through empirical experiments focused on dataset improvement, warping method, and data augmentation. Conducted model quantization for deployment on embedded devices. </p>
-                <p> - Deployed the quantized 3D vehicle future trajectory prediction model on the Qualcomm 8295 platform by converting the Python program to C++. Optimized model efficiency to achieve 200 FPS, and the quantization error (L1 error) was reduced from 4.0 to 0.15 ( ↓266%). </p>
-                <p> - Collaborated with team members to integrate the quantized 3D vehicle future trajectory prediction model into the AR navigation algorithm, enabling on-vehicle testing. This enhancement significantly improved performance in challenging driving scenarios, such as navigating roundabouts and sharp turns. </p>
-                <p> - Designed an intersection depth estimation auto-labeling algorithm using projected RTK trajectories. </p>
-            </div>
-
-            <div data-date="Jul. 2022 – Aug. 2022  <br> New Taipei, Taiwan">
-                <h3><a href="https://www.jubo-health.com/">Jubo Health</a></h3>
-                <h4>Machine Learning Engineer Intern</h4>
-                <p> - Implemented general frameworks to support various deep learning tasks including recognition, segmentation, and object detection. </p>
-                <p> - Enhanced the existing wound classification model, improving accuracy by approximately 3%. </p>
-                <p> - Deployed models as a service using Docker on GCP. </p>
-            </div>
-
-            <div data-date="Feb. 2022 – Jun. 2022 <br> Taipei, Taiwan">
-                <h3><a href="https://www.neurobittech.com/">Neurobit Technologies</a></h3>
-                <h4>Machine Learning Engineer Intern</h4>
-                <p> - Developed Gaze Estimation Model using a self-supervised learning technique, successfully reducing the error rate by 90%. </p>
-                <p> - Designed a feature matching algorithm to accurately detect torsional eye rotation. </p>
-            </div>
-
-            <div data-date="Jul. 2021 – Aug. 2021  <br> Hsinchu, Taiwan">
-                <h3><a href="https://www.tsmc.com/chinese">TSMC</a></h3>
-                <h4>Information Technology (IT) Intern</h4>
-                <p> - Full-stack system integration. </p>
-            </div>
-
-            <div data-date="2022 Fall  <br> Taipei, Taiwan">
-                <h3>National Taiwan University</h3>
-                <h4>T.A. -- Deep Learning for Computer Vision</h4>
-                <p> - Advisor: Prof. Yu-Chiang Frank Wang </p>
-                <p> - Designed and grade homework sets and final project </p>
-                <p> - Motivated students during T.A. office hours </p>
-            </div>
-
-            <div data-date="Sep. 2022 – Oct. 2022  <br> Hsinchu, Taiwan">
-                <h3>Industrial Technology Research Institute</h3>
-                <h4>T.A. -- Machine Learning</h4>
-                <p> - Advisor: Prof. Pei-Yuan Wu </p>
-                <p> - Designed the programming exercises </p>
-            </div>
-
-            <div data-date="2021 Fall  <br> Taipei, Taiwan">
-                <h3>National Taiwan University</h3>
-                <h4>T.A. -- Time-Frequency Analysis and Wavelet Transform</h4>
-                <p> - Advisor: Prof. Jian-Jiun Ding </p>
-                <p> - Graded homework sets </p>
-            </div>
-
-            <div data-date="2021 Spring  <br> Taipei, Taiwan">
-                <h3>National Taiwan University</h3>
-                <h4>T.A. -- Data Structure</h4>
-                <p> - Advisor: Prof. Pei-Yuan Wu </p>
-                <p> - Designed and graded the theoretical and programming homework sets </p>
-            </div>
-        </div>
-    </div>
-    <!-- End #work experience -->
-
-    <div id="projects" class="background-alt">
-        <h2 class="heading">Recent Projects</h2>
-        <div class="container">
-            <div class="row">
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/CTGAN.jpg" width="300" height="300" />
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>CTGAN: Cloud Transformer Generative Adversarial Network</h3>
-                        <p>
-                            [ICIP 2022] CTGAN: Cloud Transformer Generative Adversarial Network
-                        </p>
-                        <a href="https://github.com/come880412/CTGAN">Github link</a>
-                    </div>
-                    <!-- End .project-info -->
-                </div>
-                <!-- End .project -->
-
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/STSAnet.jpg" width="300" height="300" />
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>STSANet</h3>
-                        <p>
-                            A Pytorch implementation of STSANet (Spatio-Temporal Self-Attention Network)
-                        </p>
-                        <a href="https://github.com/come880412/STSANet">Github link</a>
-                    </div>
-                    <!-- End .project-info -->
-                </div>
-                <!-- End .project -->
-
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/STAS.jpg" width="300" height="300" />
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>STAS Segmentation</h3>
-                        <p> 2022 T-Brain competition - Lung Adenocarcinoma Pathological image segmentation </p>
-                        <p> Private Leaderboard: 2/307, Top1% </p>
-                        <a href="https://github.com/come880412/STAS_segmentation">Github link</a>
-                    </div>
-                    <!-- End .project-info -->
-                </div>
-                <!-- End .project -->
-
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/Crop.jpg" width="300" height="300" />
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>Crop Status Monitoring</h3>
-                        <p> 2022 AIdea competition - Crops Status Monitoring by Image Recognition </p>
-                        <p> Private Leaderboard: 3/428, Top1% </p>
-                        <a href="https://github.com/come880412/crop_classification">Github link</a>
-                    </div>
-                    <!-- End .project-info -->
-                </div>
-                <!-- End .project -->
-            </div>
-        </div>
-    </div>
-    <!-- End #projects -->
-
-    <div id="skills">
-        <h2 class="heading">Skills</h2>
-        <ul>
-            <li>Python</li>
-            <li>C++</li>
-            <li>PyTorch</li>
-            <li>Generative AI</li>
-            <li>Diffusion Models</li>
-            <li>Flux / Flux Kontext</li>
-            <li>LoRA</li>
-            <li>ControlNet</li>
-            <li>Image-to-Video</li>
-            <li>Agentic Development</li>
-            <li>AI Coding Agents</li>
-            <li>Model Quantization</li>
-            <li>Edge Deployment</li>
-            <li>3D Computer Vision</li>
-            <li>Git</li>
-            <li>Docker</li>
-        </ul>
-    </div>
-    <!-- End #skills -->
-
-    <div id="contact">
-        <h2>Get in Touch</h2>
-        <a href="mailto: giluen.huang@gmail.com" style="color:#0a0101;">giluen.huang@gmail.com</a>
-        <div id="contact-form">
-            <form method="POST" action="https://formspree.io/f/xoqbglwq">
-                <input type="hidden" name="_subject" value="Contact request from personal website" />
-                <input type="email" name="_replyto" placeholder="Your email" required>
-                <textarea name="message" placeholder="Your message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </div>
-        <!-- End #contact-form -->
-    </div>
-    <!-- End #contact -->
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-5 copyright">
-                    <p>
-                        Copyright &copy; <span id="current-year">2026</span> Gi-Luen Huang
-                    </p>
-                </div>
-                <div class="col-sm-2 top">
-                    <span id="to-top">
-                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div class="col-sm-5 social">
-                    <ul>
-                        <li>
-                            <a href="https://github.com/come880412" target="_blank"><i class="fa fa-github"
-                                    aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/in/giluenhuang/" target="_blank"><i class="fa fa-linkedin"
-                                    aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://come880412.medium.com/" target="_blank"><i class="fa fa-medium"
-                                    aria-hidden="true"></i></a>
-                        </li>
+                <div class="about-body reveal">
+                    <p>I'm a <strong>Senior AI Engineer &amp; Assistant Project Manager at CyberLink</strong>,
+                        specializing in computer vision, deep learning, and generative AI. My first stretch here was spent
+                        deep in <strong>Flux</strong> — training LoRA for object removal &amp; replacement and product
+                        backgrounds, then Flux Kontext for human beauty effects.</p>
+                    <p>Currently I <strong>guide team members</strong> building GenAI features and drive our adoption of
+                        <strong>agentic development</strong>. Before CyberLink, I shipped automotive AI at MobileDrive —
+                        projecting vehicle trajectories from front-view cameras, then quantizing and deploying the model
+                        on the Qualcomm 8295 platform for on-vehicle testing.</p>
+                    <p>I earned my <strong>M.S. in Data Science</strong> from National Taiwan University (GICE) in 2023,
+                        advised by Prof. Pei-Yuan Wu, with 4+ years of research across deep learning, computer vision, and
+                        machine learning.</p>
+                    <ul class="facts">
+                        <li><span class="k">Location</span><span class="v">New Taipei, Taiwan</span></li>
+                        <li><span class="k">Focus</span><span class="v">Generative AI · Computer Vision</span></li>
+                        <li><span class="k">Degree</span><span class="v">M.S., NTU — GPA 4.30, rank 1/160</span></li>
+                        <li><span class="k">Publications</span><span class="v">ICIP · IEEE Access · ICSSE</span></li>
                     </ul>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- End footer -->
+    </section>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/scripts.min.js"></script>
+    <!-- ===== Experience ===== -->
+    <section class="section alt" id="experience">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="idx">02</span>
+                <h2>Experience</h2>
+            </div>
+            <div class="timeline">
+                <!-- CyberLink -->
+                <div class="tl-item reveal">
+                    <div class="tl-head">
+                        <div class="tl-company"><a href="https://tw.cyberlink.com/index_zh_TW.html" target="_blank"
+                                rel="noopener">CyberLink</a></div>
+                        <div class="tl-when">Aug 2024 — Present</div>
+                    </div>
+                    <div class="tl-loc">New Taipei, Taiwan</div>
+
+                    <div class="role">
+                        <div class="role-title">
+                            <h4>Senior AI Engineer &amp; Assistant Project Manager</h4>
+                            <span class="when">May 2026 — Present</span>
+                        </div>
+                        <ul>
+                            <li>Guide team members in developing GenAI-powered features, and help plan feature roadmaps
+                                and release timelines.</li>
+                            <li>Established and shared best practices for coding-agent adoption, cutting unexpected
+                                outputs and improving development efficiency.</li>
+                            <li>Designed and built an internal Agentic AI PoC platform integrated with company auth,
+                                letting PMs and designers accelerate their product and design workflows.</li>
+                        </ul>
+                    </div>
+
+                    <div class="role">
+                        <div class="role-title">
+                            <h4>Senior AI Engineer</h4>
+                            <span class="when">May 2025 — May 2026</span>
+                        </div>
+                        <ul>
+                            <li>Trained LoRA on Flux for adaptive product background generation and object removal.</li>
+                            <li>Trained LoRA on Flux Kontext for a human beauty-effect feature that outperformed Meitu in
+                                internal QA.</li>
+                            <li>Built an image-to-video feature based on Wan2.2-Animate.</li>
+                        </ul>
+                    </div>
+
+                    <div class="role">
+                        <div class="role-title">
+                            <h4>AI Engineer</h4>
+                            <span class="when">Aug 2024 — May 2025</span>
+                        </div>
+                        <ul>
+                            <li>Developed Flux-based features trained with LoRA and ControlNet — text-to-image and product
+                                background generation.</li>
+                            <li>Built and shipped generative fill — the #1 most-used feature in PhotoDirector Mobile,
+                                beating Adobe Firefly, SnapEdit &amp; TouchRetouch in internal QA.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- MobileDrive -->
+                <div class="tl-item reveal">
+                    <div class="tl-head">
+                        <div class="tl-company"><a href="https://www.mobiledrivetech.com/index.html" target="_blank"
+                                rel="noopener">MobileDrive Technology</a></div>
+                        <div class="tl-when">Jun 2023 — May 2024</div>
+                    </div>
+                    <div class="tl-loc">New Taipei, Taiwan</div>
+                    <div class="role single-role">
+                        <div class="role-title">
+                            <h4>Machine Learning Engineer</h4>
+                        </div>
+                        <ul>
+                            <li>Projected future vehicle trajectories onto front-view images as ground truth for a 3D
+                                trajectory model, training with minimal labeling from RTK + camera data.</li>
+                            <li>Developed and optimized the 3D vehicle trajectory model; quantized it for embedded
+                                deployment.</li>
+                            <li>Deployed on Qualcomm 8295 (Python → C++) at 200 FPS, cutting L1 error from 4.0 to 0.15.
+                            </li>
+                            <li>Integrated the model into the AR navigation algorithm for on-vehicle testing, improving
+                                hard scenarios like roundabouts and sharp turns.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Jubo -->
+                <div class="tl-item reveal">
+                    <div class="tl-head">
+                        <div class="tl-company"><a href="https://www.jubo-health.com/" target="_blank"
+                                rel="noopener">Jubo Health</a></div>
+                        <div class="tl-when">Jul 2022 — Aug 2022</div>
+                    </div>
+                    <div class="tl-loc">New Taipei, Taiwan</div>
+                    <div class="role single-role">
+                        <div class="role-title">
+                            <h4>Machine Learning Engineer Intern</h4>
+                        </div>
+                        <ul>
+                            <li>Built general frameworks for recognition, segmentation, and object detection.</li>
+                            <li>Enhanced the wound-classification model, improving accuracy ~3%; deployed models via
+                                Docker on GCP.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Neurobit -->
+                <div class="tl-item reveal">
+                    <div class="tl-head">
+                        <div class="tl-company"><a href="https://www.neurobittech.com/" target="_blank"
+                                rel="noopener">Neurobit Technologies</a></div>
+                        <div class="tl-when">Feb 2022 — Jun 2022</div>
+                    </div>
+                    <div class="tl-loc">Taipei, Taiwan</div>
+                    <div class="role single-role">
+                        <div class="role-title">
+                            <h4>Machine Learning Engineer Intern</h4>
+                        </div>
+                        <ul>
+                            <li>Built a self-supervised gaze-estimation model that reduced error rate by 90%.</li>
+                            <li>Designed a feature-matching algorithm to detect torsional eye rotation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- TSMC -->
+                <div class="tl-item reveal">
+                    <div class="tl-head">
+                        <div class="tl-company"><a href="https://www.tsmc.com/chinese" target="_blank"
+                                rel="noopener">TSMC</a></div>
+                        <div class="tl-when">Jul 2021 — Aug 2021</div>
+                    </div>
+                    <div class="tl-loc">Hsinchu, Taiwan</div>
+                    <div class="role single-role">
+                        <div class="role-title">
+                            <h4>Information Technology (IT) Intern</h4>
+                        </div>
+                        <ul>
+                            <li>Full-stack system integration.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="teaching reveal">
+                <div class="k">Teaching Assistant</div>
+                <ul>
+                    <li><span class="course">Deep Learning for Computer Vision</span> — NTU, 2022 (Prof. Yu-Chiang Frank
+                        Wang)</li>
+                    <li><span class="course">Machine Learning</span> — ITRI, 2022 (Prof. Pei-Yuan Wu)</li>
+                    <li><span class="course">Time-Frequency Analysis &amp; Wavelet Transform</span> — NTU, 2021 (Prof.
+                        Jian-Jiun Ding)</li>
+                    <li><span class="course">Data Structures</span> — NTU, 2021 (Prof. Pei-Yuan Wu)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Work ===== -->
+    <section class="section" id="work">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="idx">03</span>
+                <h2>Selected Work</h2>
+            </div>
+            <div class="work-grid">
+                <article class="card reveal">
+                    <div class="card-img"><img src="images/CTGAN.jpg" alt="CTGAN"></div>
+                    <div class="card-body">
+                        <div class="card-tag">Generative · ICIP 2022</div>
+                        <h3>CTGAN</h3>
+                        <p>Cloud Transformer Generative Adversarial Network — published at IEEE ICIP 2022.</p>
+                        <a class="card-link" href="https://github.com/come880412/CTGAN" target="_blank"
+                            rel="noopener">View on GitHub <span class="arrow">↗</span></a>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-img"><img src="images/STSAnet.jpg" alt="STSANet"></div>
+                    <div class="card-body">
+                        <div class="card-tag">Saliency · Video</div>
+                        <h3>STSANet</h3>
+                        <p>PyTorch implementation of the Spatio-Temporal Self-Attention Network for video saliency.</p>
+                        <a class="card-link" href="https://github.com/come880412/STSANet" target="_blank"
+                            rel="noopener">View on GitHub <span class="arrow">↗</span></a>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-img"><img src="images/STAS.jpg" alt="STAS Segmentation"></div>
+                    <div class="card-body">
+                        <div class="card-tag">Segmentation · Top 1%</div>
+                        <h3>STAS Segmentation</h3>
+                        <p>Lung adenocarcinoma pathology segmentation — 2/307 on the T-Brain private leaderboard.</p>
+                        <a class="card-link" href="https://github.com/come880412/STAS_segmentation" target="_blank"
+                            rel="noopener">View on GitHub <span class="arrow">↗</span></a>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-img"><img src="images/Crop.jpg" alt="Crop Status Monitoring"></div>
+                    <div class="card-body">
+                        <div class="card-tag">Classification · Top 1%</div>
+                        <h3>Crop Status Monitoring</h3>
+                        <p>Crop-status recognition by image classification — 3/428 on the AIdea private leaderboard.</p>
+                        <a class="card-link" href="https://github.com/come880412/crop_classification" target="_blank"
+                            rel="noopener">View on GitHub <span class="arrow">↗</span></a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="section-head reveal" style="margin-top:90px;">
+                <span class="idx">03.1</span>
+                <h2>Publications</h2>
+            </div>
+            <div class="pubs">
+                <div class="pub reveal">
+                    <div class="venue">IEEE Access<span>2023</span></div>
+                    <div class="pub-main">
+                        <div class="title">Viewing Bias Matters in 360° Videos Visual Saliency Prediction.</div>
+                        <div class="authors">P.-W. Chen, T.-S. Yang, <strong>G.-L. Huang</strong>, et al.</div>
+                    </div>
+                </div>
+                <div class="pub reveal">
+                    <div class="venue">IEEE ICIP<span>2022</span></div>
+                    <div class="pub-main">
+                        <div class="title">CTGAN: Cloud Transformer Generative Adversarial Network.
+                            <span class="thesis">M.S. Thesis</span>
+                        </div>
+                        <div class="authors"><strong>Gi-Luen Huang</strong>, Pei-Yuan Wu</div>
+                    </div>
+                </div>
+                <div class="pub reveal">
+                    <div class="venue">ICSSE<span>2020</span></div>
+                    <div class="pub-main">
+                        <div class="title">Face Expression and Tone of Voice for Deception System.
+                            <span class="undergrad">Undergrad Research</span>
+                            <span class="award">★ Best Student Paper</span>
+                        </div>
+                        <div class="authors">L.-W. Hsiao, J.-M. Guo, <strong>G.-L. Huang</strong>, et al.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section class="section alt" id="skills">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="idx">04</span>
+                <h2>Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-cat reveal">
+                    <h3>Generative AI</h3>
+                    <div class="tags">
+                        <span class="tag">Diffusion Models</span>
+                        <span class="tag">Flux</span>
+                        <span class="tag">Flux Kontext</span>
+                        <span class="tag">LoRA</span>
+                        <span class="tag">ControlNet</span>
+                        <span class="tag">Image-to-Video (Wan2.2)</span>
+                    </div>
+                </div>
+                <div class="skill-cat reveal">
+                    <h3>Deep Learning</h3>
+                    <div class="tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Model Quantization</span>
+                        <span class="tag">Edge Deployment (Qualcomm 8295)</span>
+                        <span class="tag">3D Computer Vision</span>
+                    </div>
+                </div>
+                <div class="skill-cat reveal">
+                    <h3>Languages</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">C++</span>
+                    </div>
+                </div>
+                <div class="skill-cat reveal">
+                    <h3>Tools &amp; Agentic</h3>
+                    <div class="tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">AI Coding Agents (Claude Code · Cursor)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section contact" id="contact">
+        <div class="wrap">
+            <div class="reveal">
+                <p class="mono" style="margin-bottom:18px;">05 — Contact</p>
+                <h2>Let's build something.</h2>
+                <p>Open to conversations about generative AI, computer vision, and shipping ML to production. The fastest
+                    way to reach me is email.</p>
+                <a class="contact-mail" href="mailto:giluen.huang@gmail.com">giluen.huang@gmail.com</a>
+                <div class="socials">
+                    <a href="https://github.com/come880412" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/giluenhuang/" target="_blank" rel="noopener"
+                        aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+                        </svg>
+                    </a>
+                    <a href="https://come880412.medium.com/" target="_blank" rel="noopener" aria-label="Medium">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:giluen.huang@gmail.com" aria-label="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
+                            <path d="M3 6l9 6 9-6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="wrap">
+            <span class="mono">© <span id="year">2026</span> Gi-Luen Huang · Built with intent</span>
+            <span id="to-top">Back to top ↑</span>
+        </div>
+    </footer>
+
+    <script>
+        // year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // nav background on scroll
+        const nav = document.getElementById('nav');
+        const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // back to top
+        document.getElementById('to-top').addEventListener('click', () =>
+            window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // reveal on scroll
+        const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+        } else {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        }
+
+        // ===== Denoising field — noise resolves into a latent grid =====
+        (function () {
+            const canvas = document.getElementById('field');
+            const ctx = canvas.getContext('2d');
+            const hero = document.getElementById('top');
+            const stops = [[108, 92, 231], [214, 33, 110], [225, 120, 20]]; // violet → magenta → orange (deepened for light bg)
+            let W, H, DPR, particles = [], start = null, raf = null, mouse = { x: -9999, y: -9999 };
+
+            const lerp = (a, b, t) => a + (b - a) * t;
+            function heat(t) {
+                t = Math.max(0, Math.min(1, t));
+                const seg = t * 2, i = Math.min(1, Math.floor(seg)), f = seg - i;
+                const a = stops[i], b = stops[i + 1];
+                return [lerp(a[0], b[0], f), lerp(a[1], b[1], f), lerp(a[2], b[2], f)];
+            }
+
+            function build() {
+                DPR = Math.min(window.devicePixelRatio || 1, 2);
+                W = hero.clientWidth; H = hero.clientHeight;
+                canvas.width = W * DPR; canvas.height = H * DPR;
+                ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+                const gap = Math.max(26, Math.min(42, W / 32));
+                const cols = Math.ceil(W / gap) + 1, rows = Math.ceil(H / gap) + 1;
+                particles = [];
+                for (let y = 0; y < rows; y++) {
+                    for (let x = 0; x < cols; x++) {
+                        const tx = x * gap, ty = y * gap;
+                        particles.push({
+                            tx, ty,
+                            nx: tx + (Math.random() * 2 - 1) * W * 0.45,
+                            ny: ty + (Math.random() * 2 - 1) * H * 0.45,
+                            ph: Math.random() * Math.PI * 2,
+                            hue: (tx / W + ty / H) / 2
+                        });
+                    }
+                }
+            }
+
+            function draw(ts) {
+                if (!start) start = ts;
+                const t = ts - start;
+                const p = reduce ? 1 : Math.min(1, t / 2400);
+                const e = 1 - Math.pow(1 - p, 3); // easeOutCubic
+                ctx.clearRect(0, 0, W, H);
+                for (const d of particles) {
+                    const drift = reduce ? 0 : e;
+                    const dx = Math.sin(ts * 0.0006 + d.ph) * 2.2 * drift;
+                    const dy = Math.cos(ts * 0.0005 + d.ph) * 2.2 * drift;
+                    let x = lerp(d.nx, d.tx, e) + dx;
+                    let y = lerp(d.ny, d.ty, e) + dy;
+
+                    // gentle cursor repulsion for delight
+                    const mdx = x - mouse.x, mdy = y - mouse.y;
+                    const dist2 = mdx * mdx + mdy * mdy;
+                    if (dist2 < 12000) {
+                        const f = (1 - dist2 / 12000) * 14;
+                        const dd = Math.sqrt(dist2) || 1;
+                        x += (mdx / dd) * f; y += (mdy / dd) * f;
+                    }
+
+                    const shimmer = reduce ? 0.3 : 0.5 + 0.5 * Math.sin(ts * 0.001 + d.ph);
+                    const hv = d.hue + (reduce ? 0 : 0.12 * Math.sin(ts * 0.0004 + d.ph));
+                    const [r, g, b] = heat(hv);
+                    const a = (0.16 + 0.30 * shimmer) * e;
+                    ctx.beginPath();
+                    ctx.fillStyle = 'rgba(' + (r | 0) + ',' + (g | 0) + ',' + (b | 0) + ',' + a + ')';
+                    ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                if (reduce) return;            // single static frame
+                raf = requestAnimationFrame(draw);
+            }
+
+            function run() { if (raf) cancelAnimationFrame(raf); start = null; build(); raf = requestAnimationFrame(draw); }
+
+            window.addEventListener('mousemove', (ev) => {
+                const r = canvas.getBoundingClientRect();
+                mouse.x = ev.clientX - r.left; mouse.y = ev.clientY - r.top;
+            }, { passive: true });
+            window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+            let rt;
+            window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(run, 180); }, { passive: true });
+            run();
+        })();
+    </script>
 </body>
 
 </html>
